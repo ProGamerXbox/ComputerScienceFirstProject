@@ -4,12 +4,19 @@ Project
 
 # Rules
 
-- 
+- 7 maximum mistakes allowed
 
 # Breaking down problems
 
-- [x] - create a word list:
-- [x]        - pick at random a word from that list and use it as the word to guess
 
-- [ ] - tell to the user how many letters there are in the word 
+### Random
+- [x] - create a word list:
+- [x] - pick at random a word from that list and use it as the word to guess
+
+### Word
+
+- [ ] - decompose the characters of the word one by one
+
+### User
+- [x] - tell to the user how many letters there are in the word 
 - [ ] - put the guessing into a function
