@@ -1,0 +1,5 @@
+# Hang man
+
+Project
+
+# Rules
