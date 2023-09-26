@@ -39,3 +39,5 @@
    - 3.1. If the user is wrong, meaning the letter is not in the word, the user needs to try again, and the user also loses a guess.
 
 4. If the user correctly guesses all the letters of the word within the 7 attempts, then the user wins yeay!
+
+---
