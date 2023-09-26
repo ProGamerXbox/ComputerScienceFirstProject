@@ -2,20 +2,7 @@
 
 Project
 
-
 ---
-
-# research
-
-# requirements
-
-- text based
-
----
-
-# Rules
-
-- 7 maximum mistakes allowed
 
 # Breaking down problems
 
