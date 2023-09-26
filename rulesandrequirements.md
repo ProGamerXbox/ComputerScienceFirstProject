@@ -4,11 +4,11 @@
 
 # Rules
 
-- 7 maximum mistakes allowed
-- only 1 letter can be guessed each try
-- the word cannot be changed in the middle of the game
-- the game stops when the user found the word within 7 tries
-- the user can only inputs letters from a-z (no other datatypes allowed, should only be strings)
+- Maximum of 7 mistakes allowed.
+- Only 1 letter can be guessed in each try.
+- The word cannot be changed in the middle of the game.
+- The game stops when the user finds the word within 7 tries.
+- The user can only input letters from 'a' to 'z' (no other data types are allowed; input should only be strings).
 
 ---
 
