@@ -4,7 +4,7 @@
 
 # Project Requirements
 
-- Don't overestimate or underestimate your coding capabilities; work on projects at your skill level.
+- Don't overestimate or underestimate your coding capabilities; work at your skill level.
 - The project needs to be completed by October 6th.
 - Collaborate with your teams, and ensure that the workload is divided equally.
 - Optimize your code at the end to make it more readable and efficient.
