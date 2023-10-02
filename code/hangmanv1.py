@@ -13,26 +13,21 @@ print("\n",shuffled_word)
 
 ask_letter = input("Enter a letter : ")
 
-emptylist.append(ask_letter)
-print(emptylist)
-
-
 while tries != 0:
 
     if (len(ask_letter)) >= 1: # looking for the input to be no more than 1 letter
         print("needs to be only one letter")
 
     if ask_letter in shuffled_word:
-        emptylist.append(ask_letter)
         print("ITS IN THE WORD!!!")
-        print(emptylist)
+        print("Wrong letters guessed :", emptylist)
         ask_letter = input("Enter a letter : ")
 
     else:
         emptylist.append(ask_letter)
         tries -= 1
         print("That isn't in the word! You lost a guess!")
-        print(emptylist)
+        print("Letter already guessed :", emptylist)
         print("you now have", tries, "attempts remaining")
         ask_letter = input("Enter a letter : ")
         
