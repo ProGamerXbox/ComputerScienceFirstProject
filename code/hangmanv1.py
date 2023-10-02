@@ -27,7 +27,7 @@ while tries != 0:
         emptylist.append(ask_letter)
         tries -= 1
         print("That isn't in the word! You lost a guess!")
-        print("Letter already guessed :", emptylist)
+        print("Wrong letters guessed :", emptylist)
         print("you now have", tries, "attempts remaining")
         ask_letter = input("Enter a letter : ")
         

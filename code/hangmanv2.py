@@ -28,8 +28,5 @@ while tries != 7:
         guess = input("Enter a letter : ")
 
 
-
- 
-
 if tries == 7:
     print ("The word was " + str(word))
