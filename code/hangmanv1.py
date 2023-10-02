@@ -19,9 +19,9 @@ while tries != 0:
         print("needs to be only one letter")
 
     if ask_letter in shuffled_word:
-        print("ITS IN THE WORD!!!")
+        print("'",ask_letter,"'", "is in the word !")
         print("Wrong letters guessed :", emptylist)
-        ask_letter = input("Enter a letter : ")
+        ask_letter = input("\n Enter a letter : ")
 
     else:
         emptylist.append(ask_letter)
@@ -29,5 +29,5 @@ while tries != 0:
         print("That isn't in the word! You lost a guess!")
         print("Wrong letters guessed :", emptylist)
         print("you now have", tries, "attempts remaining")
-        ask_letter = input("Enter a letter : ")
+        ask_letter = input("\n Enter a letter : ")
         
