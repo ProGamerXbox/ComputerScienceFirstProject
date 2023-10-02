@@ -24,6 +24,8 @@
 # Program Requirements
 
 - Text based (No graphics)
+- randomly generated word
+- 1 player mode only
 
 ---
 
