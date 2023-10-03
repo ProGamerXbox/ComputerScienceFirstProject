@@ -56,22 +56,19 @@ HANGMANPICS = ["",'''
  /|\  |
  / \  |
       |
-=========''']
-
-def hangmanascii():
-    global tries
-    global HANGMANPICS
-    try:
-        print(HANGMANPICS[tries])
-    except:
-        print('''
+=========''', '''
   +---+
   |   |
   O   |
  /|\  |
  / \  |
       |
-=========''')
+=========''']
+
+def hangmanascii():
+    global tries
+    global HANGMANPICS
+    print(HANGMANPICS[tries])
 def lose():
     global shuffled_word
     print('\nYou lost')
@@ -101,18 +98,12 @@ ask_letter = input("\n-----------------------\nGuess a letter : ")
 while tries <= 7:
     print(tries)
 
-    if ask_letter in alphabet:
+    if (len(ask_letter)) > 1: # looking for the input to be no more than 1 letter
+        print("/!\ Your guess must only be one letter /!\ ")
+        ask_letter = input("\n-----------------------\nGuess a letter : ")
+        continue
 
-        if ask_letter in wrongguessedword:
-            tries -= 1
-            print("You already guessed this letter")   
-            wrongguessedword.remove(ask_letter)
-
-        if (len(ask_letter)) > 1: # looking for the input to be no more than 1 letter
-            hangmanascii()
-            print("/!\ Your guess needs to be only one letter /!\ ")
-            ask_letter = input("\n-----------------------\nGuess a letter : ")
-            continue
+    elif ask_letter in alphabet:
 
         if ask_letter in shuffled_word:
             hangmanascii()
@@ -140,6 +131,5 @@ while tries <= 7:
     else:
         print("[!] The letter guessed must be between [a-z]")
         ask_letter = input("\n-----------------------\nGuess a letter : ")
-
 else:
     lose()
