@@ -13,8 +13,10 @@ Project
 ### Word
 
 - [ ] - decompose the characters of the word one by one
+- [ ] - underscore and letters hints in order
 
 ### User
 - [x] - tell to the user how many letters there are in the word 
 - [ ] - put the guessing into a function
-- [ ] - if the user puts more than 1 letter, it returns an error and re asked him
+- [x] - if the user puts more than 1 letter, it returns an error and re asked him
+- [ ] - hangman ascii progress
