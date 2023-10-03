@@ -9,7 +9,7 @@ emptylist = []
 
 print("\n\nThe word you are looking for is",word_lenght, "characters long\n")
 
-print("\n",shuffled_word)
+print("\n\n",shuffled_word)
 
 ask_letter = input("Enter a letter : ")
 
@@ -29,7 +29,7 @@ while tries != 0:
     if ask_letter in shuffled_word:
         print("'",ask_letter,"'", "is in the word !")
         print("Wrong letters guessed :", emptylist)
-        ask_letter = input("\n Enter a letter : ")
+        ask_letter = input("\nEnter a letter : ")
 
     else:
         emptylist.append(ask_letter)
@@ -37,6 +37,6 @@ while tries != 0:
         print("That isn't in the word! You lost a guess!")
         print("Wrong letters guessed :", emptylist)
         print("you now have", tries, "attempts remaining")
-        ask_letter = input("\n Enter a letter : ")
+        ask_letter = input("\nEnter a letter : ")
 else:
     lose()
