@@ -13,10 +13,18 @@ print("\n",shuffled_word)
 
 ask_letter = input("Enter a letter : ")
 
+def lose():
+    global shuffled_word
+    print('You lost')
+    print('the word was',"'", shuffled_word, "'")
+    exit()
+
 while tries != 0:
 
-    if (len(ask_letter)) >= 1: # looking for the input to be no more than 1 letter
+    if (len(ask_letter)) > 1: # looking for the input to be no more than 1 letter
         print("needs to be only one letter")
+        ask_letter = input("\n Enter a letter : ")
+        continue
 
     if ask_letter in shuffled_word:
         print("'",ask_letter,"'", "is in the word !")
@@ -30,4 +38,5 @@ while tries != 0:
         print("Wrong letters guessed :", emptylist)
         print("you now have", tries, "attempts remaining")
         ask_letter = input("\n Enter a letter : ")
-        
+else:
+    lose()
