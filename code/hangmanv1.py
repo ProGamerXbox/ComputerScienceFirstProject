@@ -7,36 +7,131 @@ index = 1
 tries = 7
 emptylist = []
 
-print("\n\nThe word you are looking for is",word_lenght, "characters long\n")
+HANGMANPICS = ['''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''']
 
-print("\n\n",shuffled_word)
-
-ask_letter = input("Enter a letter : ")
-
+def hangmanascii():
+    global tries
+    global HANGMANPICS
+    
+    if tries == 6:
+        print(HANGMANPICS[0])
+    if tries == 5:
+        print(HANGMANPICS[1])
+    if tries == 4:
+        print(HANGMANPICS[2])
+    if tries == 3:
+        print(HANGMANPICS[3])
+    if tries == 2:
+        print(HANGMANPICS[4])
+    if tries == 1:
+        print(HANGMANPICS[5])
+    if tries <= 0:
+        print(HANGMANPICS[6])
 def lose():
     global shuffled_word
     print('You lost')
     print('the word was',"'", shuffled_word, "'")
     exit()
 
-while tries != 0:
+print("""
+  _    _          _   _  _____ __  __          _   _ 
+ | |  | |   /\   | \ | |/ ____|  \/  |   /\   | \ | |
+ | |__| |  /  \  |  \| | |  __| \  / |  /  \  |  \| |
+ |  __  | / /\ \ | . ` | | |_ | |\/| | / /\ \ | . ` |
+ | |  | |/ ____ \| |\  | |__| | |  | |/ ____ \| |\  |
+ |_|__|_/_/    \_\_| \_|\_____|_|  |_/_/    \_\_| \_|
+  / ____|   /\   |  \/  |  ____|                   
+ | |  __   /  \  | \  / | |__    Made by :                    
+ | | |_ | / /\ \ | |\/| |  __|        - Tom           
+ | |__| |/ ____ \| |  | | |____       - William          
+  \_____/_/    \_\_|  |_|______|      - Marius    
+""")
+
+print("\nThe word you are looking for is",word_lenght, "characters long")
+
+print("\n",shuffled_word)
+
+ask_letter = input("""
+-----------------------
+Guess a letter : """)
+
+while tries >= 1:
 
     if (len(ask_letter)) > 1: # looking for the input to be no more than 1 letter
-        print("needs to be only one letter")
-        ask_letter = input("\n Enter a letter : ")
+        hangmanascii()
+        print("/!\ Your guess needs to be only one letter /!\ ")
+        ask_letter = input("""
+-----------------------
+Guess a letter : """)
         continue
 
     if ask_letter in shuffled_word:
-        print("'",ask_letter,"'", "is in the word !")
-        print("Wrong letters guessed :", emptylist)
-        ask_letter = input("\nEnter a letter : ")
+        hangmanascii()
+        print("[✔]'",ask_letter,"'", "is in the word !")
+        print("\n[-] Wrong letters guessed :", emptylist)
+        ask_letter = input("""
+-----------------------
+\nGuess a letter : """)
 
     else:
-        emptylist.append(ask_letter)
         tries -= 1
-        print("That isn't in the word! You lost a guess!")
-        print("Wrong letters guessed :", emptylist)
-        print("you now have", tries, "attempts remaining")
-        ask_letter = input("\nEnter a letter : ")
+        emptylist.append(ask_letter)
+        hangmanascii()
+        print("\n[!] Letter not in the word! You lost a guess!")
+        print("\nWrong letters guessed :", emptylist)
+        print("[!] You now have", tries, "attempts remaining")
+        ask_letter = input("""
+-----------------------
+\nGuess a letter : """)
+
 else:
     lose()
