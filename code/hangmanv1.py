@@ -7,6 +7,16 @@ alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
 tries = 1
 wrongguessedword = []
 
+hintguesses = ''
+
+for x in shuffled_word:
+    hintguesses = hintguesses + '_'
+hintguesses = list(hintguesses)
+letterLength = 0
+
+print("".join(hintguesses))
+
+
 HANGMANPICS = ['','''
   +---+
   |   |
@@ -98,9 +108,14 @@ ask_letter = input("\n-----------------------\nGuess a letter : ")
 while tries <= 7:
     print(tries)
 
+    if('_' not in "".join(hintguesses)):
+        print("\nYou won yeay !")
+        exit()
+
     if (len(ask_letter)) > 1: # looking for the input to be no more than 1 letter
         print("/!\ Your guess must only be one letter /!\ ")
         ask_letter = input("\n-----------------------\nGuess a letter : ")
+        print("\n","".join(hintguesses))
         continue
 
     elif ask_letter in alphabet:
@@ -109,6 +124,7 @@ while tries <= 7:
             hangmanascii()
             print("[✔]'",ask_letter,"'", "is in the word !")
             print("\n[-] Wrong letters guessed :", wrongguessedword)
+            print("\n","".join(hintguesses))
             ask_letter = input("\n-----------------------\nGuess a letter : ")
 
         else:
@@ -119,6 +135,7 @@ while tries <= 7:
             print("\n[!] Letter not in the word! You lost a guess!")
             print("\nWrong letters guessed :", wrongguessedword)
             print("[!] You now have", 8-tries, "attempts remaining")
+            print("\n","".join(hintguesses))
             
             if(8-tries == 0):
                 lose()
@@ -128,8 +145,16 @@ while tries <= 7:
                 tries -= 1
                 print("You already guessed this letter")   
                 wrongguessedword.remove(ask_letter)
+                print("\n","".join(hintguesses))
+
+            for x in shuffled_word:
+              if(x==ask_letter):
+                hintguesses[shuffled_word.find(ask_letter, letterLength)] = ask_letter
+                letterLength = shuffled_word.find(ask_letter, letterLength) +1
+
     else:
         print("[!] The letter guessed must be between [a-z]")
+        print("\n","".join(hintguesses))
         ask_letter = input("\n-----------------------\nGuess a letter : ")
 else:
     lose()
