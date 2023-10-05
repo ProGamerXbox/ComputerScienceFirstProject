@@ -156,7 +156,7 @@ while tries <= 7:
         if ask_letter in shuffled_word:
             hangmanascii()
             print("[✔]'",ask_letter,"'", "is in the word !")
-            print("\n[-] Wrong letters guessed :", wrongguessedword)
+            print("[-] Wrong letters guessed :", wrongguessedword)
             print("\n","".join(hintguesses))
             ask_letter = input("\n-----------------------\nGuess a letter : ")
 
@@ -164,8 +164,8 @@ while tries <= 7:
             tries += 1
             wrongguessedword.append(ask_letter)
             hangmanascii()
-            print("\n[!] Letter not in the word! You lost a guess!")
             print("\nWrong letters guessed :", wrongguessedword)
+            print("\n[!] Letter not in the word!")
             print("[!] You now have", 8-tries, "attempts remaining")
             print("\n","".join(hintguesses))
             
@@ -175,7 +175,7 @@ while tries <= 7:
             ask_letter = input("\n-----------------------\nGuess a letter : ")
             if ask_letter in wrongguessedword:
                 tries -= 1
-                print("You already guessed this letter")   
+                print("[*] You already guessed this letter")   
                 wrongguessedword.remove(ask_letter)
                 print("\n","".join(hintguesses))
 
