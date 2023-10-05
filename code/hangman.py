@@ -101,12 +101,11 @@ print("""
 
 print("\nThe word you are looking for is",word_lenght, "characters long")
 
-print("\n",shuffled_word)
+#print("\n",shuffled_word)
 
 ask_letter = input("\n-----------------------\nGuess a letter : ")
 
 while tries <= 7:
-    print(tries)
 
     if('_' not in "".join(hintguesses)):
         print("\nYou won yeay !")
@@ -129,7 +128,6 @@ while tries <= 7:
 
         else:
             tries += 1
-            print(tries)
             wrongguessedword.append(ask_letter)
             hangmanascii()
             print("\n[!] Letter not in the word! You lost a guess!")

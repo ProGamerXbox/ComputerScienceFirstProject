@@ -14,6 +14,9 @@ Project
 
 - [ ] - decompose the characters of the word one by one
 - [ ] - underscore and letters hints in order
+- [ ] - refuse numbers
+- [x] - only a-z letters
+- [x] - letterlength
 
 ### User
 - [x] - tell to the user how many letters there are in the word 
