@@ -79,6 +79,7 @@ def hangmanascii():
     global tries
     global HANGMANPICS
     print(HANGMANPICS[tries])
+
 def lose():
     global shuffled_word
     print('''
@@ -98,7 +99,25 @@ def lose():
 |_______|  |___|  |_______||___|  |_|
 
 ''')
-    print('the word was',"'", shuffled_word, "'")
+    print('\nthe word was',"'", shuffled_word, "'\n")
+    exit()
+def win():
+    print('''
+ __   __  _______  __   __      
+|  | |  ||       ||  | |  |     
+|  |_|  ||   _   ||  | |  |     
+|       ||  | |  ||  |_|  |     
+|_     _||  |_|  ||       |     
+  |   |  |       ||       |     
+  |___|  |_______||_______|     
+ _     _  _______  __    _  __  
+| | _ | ||       ||  |  | ||  | 
+| || || ||   _   ||   |_| ||  | 
+|       ||  | |  ||       ||  | 
+|       ||  |_|  ||  _    ||__| 
+|   _   ||       || | |   | __  
+|__| |__||_______||_|  |__||__| 
+''')
     exit()
 
 print("""
@@ -124,8 +143,7 @@ ask_letter = input("\n-----------------------\nGuess a letter : ")
 while tries <= 7:
 
     if('_' not in "".join(hintguesses)):
-        print("\nYou won yeay !")
-        exit()
+        win()
 
     if (len(ask_letter)) > 1: # looking for the input to be no more than 1 letter
         print("/!\ Your guess must only be one letter /!\ ")
