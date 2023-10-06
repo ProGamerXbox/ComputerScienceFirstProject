@@ -1,3 +1,4 @@
+```mermaid
 graph LR
 A[Start] --> B[Initialize hangman_list, alphabet]
 B --> C[Define start function]
@@ -30,3 +31,4 @@ Z --> J
 Y --> AA[Exit the script]
 AA --> AB[End]
 T --> AB
+```
