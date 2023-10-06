@@ -1,87 +1,98 @@
 import random
-#put the list countaining a lot of words
-hangman_list = open('wordlist.txt').read().splitlines() # reads the file "wordlist.txt" and put it as a list
-shuffled_word = random.choice(hangman_list) # take at random a word from the list
-word_lenght = len(shuffled_word) # counts the lenght of the word which has been picked at random
+
+hangman_list = open('wordlist.txt').read().splitlines()
 alphabet = open('alphabet.txt').read().splitlines()
-tries = 1
-wrongguessedword = []
-
-hintguesses = ''
-
-for x in shuffled_word:
-    hintguesses = hintguesses + '_'
-hintguesses = list(hintguesses)
-letterLength = 0
-
-print("".join(hintguesses))
 
 
-HANGMANPICS = ['','''
+def replay_game():
+    global tries
+    response = input("Would you like to play again? (y/n): ")
+    if response.lower() == 'y':
+        tries = 1
+        play_game()
+    elif response.lower() == 'n':
+        exit()
+    else:
+        print("Invalid input. Please enter 'y' or 'n'.")
+        replay_game()
+
+def hangmanascii():
+    HANGMANPICS = ['',
+'''
   +---+
   |   |
       |
       |
       |
       |
-=========''', '''
+=========
+''', 
+'''
   +---+
   |   |
   O   |
       |
       |
       |
-=========''', '''
+=========
+''', 
+'''
   +---+
   |   |
   O   |
   |   |
       |
       |
-=========''', '''
+=========
+''', 
+'''
   +---+
   |   |
   O   |
  /|   |
       |
       |
-=========''', '''
+=========
+''', 
+'''
   +---+
   |   |
   O   |
  /|\  |
       |
       |
-=========''', '''
+=========
+''', 
+'''
   +---+
   |   |
   O   |
  /|\  |
  /    |
       |
-=========''', '''
+=========
+''', 
+'''
   +---+
   |   |
   O   |
  /|\  |
  / \  |
       |
-=========''', '''
+=========
+''', 
+'''
   +---+
   |   |
   O   |
  /|\  |
  / \  |
       |
-=========''']
-
-def hangmanascii():
-    global tries
-    global HANGMANPICS
+=========
+''']
     print(HANGMANPICS[tries])
 
 def lose():
-    global shuffled_word
     print('''
  _______  _______  __   __  _______  
 |       ||   _   ||  |_|  ||       | 
@@ -97,10 +108,9 @@ def lose():
 |  |_|  ||       ||    ___||    __  |
 |       | |     | |   |___ |   |  | |
 |_______|  |___|  |_______||___|  |_|
-
 ''')
-    print('\nthe word was',"'", shuffled_word, "'\n")
-    exit()
+    print('\nThe word was', "'", shuffled_word, "'\n")
+    replay_game()
 def win():
     print('''
  __   __  _______  __   __      
@@ -118,75 +128,66 @@ def win():
 |   _   ||       || | |   | __  
 |__| |__||_______||_|  |__||__| 
 ''')
-    exit()
+    replay_game()
 
-print("""
-  _    _          _   _  _____ __  __          _   _ 
- | |  | |   /\   | \ | |/ ____|  \/  |   /\   | \ | |
- | |__| |  /  \  |  \| | |  __| \  / |  /  \  |  \| |
- |  __  | / /\ \ | . ` | | |_ | |\/| | / /\ \ | . ` |
- | |  | |/ ____ \| |\  | |__| | |  | |/ ____ \| |\  |
- |_|__|_/_/    \_\_| \_|\_____|_|  |_/_/    \_\_| \_|
-  / ____|   /\   |  \/  |  ____|                   
- | |  __   /  \  | \  / | |__    Made by :                    
- | | |_ | / /\ \ | |\/| |  __|        - Tom           
- | |__| |/ ____ \| |  | | |____       - William          
-  \_____/_/    \_\_|  |_|______|      - Marius    
-""")
+def start():
+    global tries,hangman_list,shuffled_word,shuffled_word,word_length,alphabet,wrong_guessed_word,hintguesses,ask_letter
+    
+    shuffled_word = random.choice(hangman_list)
+    word_length = len(shuffled_word)
+    tries = 1
+    wrong_guessed_word = []
 
-print("\nThe word you are looking for is",word_lenght, "characters long")
+    hintguesses = ['_'] * len(shuffled_word)
+    print("".join(hintguesses))
 
-#print("\n",shuffled_word)
+    print("""
+     _    _          _   _  _____ __  __          _   _ 
+    | |  | |   /\   | \ | |/ ____|  \/  |   /\   | \ | |
+    | |__| |  /  \  |  \| | |  __| \  / |  /  \  |  \| |
+    |  __  | / /\ \ | . ` | | |_ | |\/| | / /\ \ | . ` |
+    | |  | |/ ____ \| |\  | |__| | |  | |/ ____ \| |\  |
+    |_|__|_/_/    \_\_| \_|\_____|_|  |_/_/    \_\_| \_|
+    / ____|    /\   |  \/  |  ____|                   
+    | |  __   /  \  | \  / | |__    Made by :                    
+    | | |_ | / /\ \ | |\/| |  __|        - Tom           
+    | |__| |/ ____ \| |  | | |____       - William          
+    \ _____/_/    \_\_|  |_|______|      - Marius    
+    """)
 
-ask_letter = input("\n-----------------------\nGuess a letter : ")
+    print("\nThe word you are looking for is", word_length, "characters long")
 
-while tries <= 7:
+    ask_letter = input("\n-----------------------\nGuess a letter : ")
 
-    if('_' not in "".join(hintguesses)):
-        win()
+def play_game():
+    global tries,hangman_list,shuffled_word,shuffled_word,word_length,alphabet,wrong_guessed_word,hintguesses,ask_letter
+    start()
+    while tries <= 7:
+        if '_' not in hintguesses:
+            win()
 
-    if (len(ask_letter)) > 1: # looking for the input to be no more than 1 letter
-        print("/!\ Your guess must only be one letter /!\ ")
-        ask_letter = input("\n-----------------------\nGuess a letter : ")
-        print("\n","".join(hintguesses))
-        continue
-
-    elif ask_letter in alphabet:
-
-        if ask_letter in shuffled_word:
+        if len(ask_letter) != 1 or ask_letter.lower() not in alphabet:
+            print("/!\ Your guess must be a single letter from the alphabet /!\ ")
+        elif ask_letter in wrong_guessed_word:
+            print("[*] You already guessed this letter")
+        elif ask_letter in shuffled_word:
             hangmanascii()
-            print("[✔]'",ask_letter,"'", "is in the word !")
-            print("[-] Wrong letters guessed :", wrongguessedword)
-            print("\n","".join(hintguesses))
-            ask_letter = input("\n-----------------------\nGuess a letter : ")
-
+            print("[✔]'", ask_letter, "'", "is in the word!")
+            print("[-] Wrong letters guessed:", wrong_guessed_word)
+            for index, letter in enumerate(shuffled_word):
+                if letter == ask_letter:
+                    hintguesses[index] = ask_letter
+            print("\n", "".join(hintguesses))
         else:
             tries += 1
-            wrongguessedword.append(ask_letter)
+            wrong_guessed_word.append(ask_letter)
             hangmanascii()
-            print("\nWrong letters guessed :", wrongguessedword)
+            print("\nWrong letters guessed:", wrong_guessed_word)
             print("\n[!] Letter not in the word!")
-            print("[!] You now have", 8-tries, "attempts remaining")
-            print("\n","".join(hintguesses))
-            
-            if(8-tries == 0):
+            print("[!] You now have", 8 - tries, "attempts remaining")
+            print("\n", "".join(hintguesses))
+            if tries == 8:
                 lose()
-
-            ask_letter = input("\n-----------------------\nGuess a letter : ")
-            if ask_letter in wrongguessedword:
-                tries -= 1
-                print("[*] You already guessed this letter")   
-                wrongguessedword.remove(ask_letter)
-                print("\n","".join(hintguesses))
-
-            for x in shuffled_word:
-              if(x==ask_letter):
-                hintguesses[shuffled_word.find(ask_letter, letterLength)] = ask_letter
-                letterLength = shuffled_word.find(ask_letter, letterLength) +1
-
-    else:
-        print("[!] The letter guessed must be between [a-z]")
-        print("\n","".join(hintguesses))
         ask_letter = input("\n-----------------------\nGuess a letter : ")
-else:
-    lose()
+
+play_game()
