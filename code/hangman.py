@@ -3,7 +3,7 @@ import random
 hangman_list = open('wordlist.txt').read().splitlines() # reads the file "wordlist.txt" and put it as a list
 shuffled_word = random.choice(hangman_list) # take at random a word from the list
 word_lenght = len(shuffled_word) # counts the lenght of the word which has been picked at random
-alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+alphabet = open('alphabet.txt').read().splitlines()
 tries = 1
 wrongguessedword = []
 
