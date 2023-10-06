@@ -3,18 +3,35 @@ import random
 hangman_list = open('wordlist.txt').read().splitlines()
 alphabet = open('alphabet.txt').read().splitlines()
 
+def start():
+    global tries,hangman_list,shuffled_word,shuffled_word,word_length,alphabet,wrong_guessed_word,hintguesses,ask_letter
+    
+    shuffled_word = random.choice(hangman_list)
+    word_length = len(shuffled_word)
+    tries = 1
+    wrong_guessed_word = []
 
-def replay_game():
-    global tries
-    response = input("Would you like to play again? (y/n): ")
-    if response.lower() == 'y':
-        tries = 1
-        play_game()
-    elif response.lower() == 'n':
-        exit()
-    else:
-        print("Invalid input. Please enter 'y' or 'n'.")
-        replay_game()
+    hintguesses = ['_'] * len(shuffled_word)
+    print("".join(hintguesses))
+
+    print("""
+  _    _          _   _  _____ __  __          _   _ 
+ | |  | |   /\   | \ | |/ ____|  \/  |   /\   | \ | |
+ | |__| |  /  \  |  \| | |  __| \  / |  /  \  |  \| |
+ |  __  | / /\ \ | . ` | | |_ | |\/| | / /\ \ | . ` |
+ | |  | |/ ____ \| |\  | |__| | |  | |/ ____ \| |\  |
+ |_|__|_/_/    \_\_| \_|\_____|_|  |_/_/    \_\_| \_|
+  / ____|   /\   |  \/  |  ____|
+ | |  __   /  \  | \  / | |__    Made by :
+ | | |_ | / /\ \ | |\/| |  __|        - Tom
+ | |__| |/ ____ \| |  | | |____       - William
+  \_____/_/    \_\_|  |_|______|      - Marius
+
+    """)
+
+    print("\nThe word you are looking for is", word_length, "characters long")
+
+    ask_letter = input("\n-----------------------\nGuess a letter : ")
 
 def hangmanascii():
     HANGMANPICS = ['',
@@ -130,34 +147,17 @@ def win():
 ''')
     replay_game()
 
-def start():
-    global tries,hangman_list,shuffled_word,shuffled_word,word_length,alphabet,wrong_guessed_word,hintguesses,ask_letter
-    
-    shuffled_word = random.choice(hangman_list)
-    word_length = len(shuffled_word)
-    tries = 1
-    wrong_guessed_word = []
-
-    hintguesses = ['_'] * len(shuffled_word)
-    print("".join(hintguesses))
-
-    print("""
-     _    _          _   _  _____ __  __          _   _ 
-    | |  | |   /\   | \ | |/ ____|  \/  |   /\   | \ | |
-    | |__| |  /  \  |  \| | |  __| \  / |  /  \  |  \| |
-    |  __  | / /\ \ | . ` | | |_ | |\/| | / /\ \ | . ` |
-    | |  | |/ ____ \| |\  | |__| | |  | |/ ____ \| |\  |
-    |_|__|_/_/    \_\_| \_|\_____|_|  |_/_/    \_\_| \_|
-    / ____|    /\   |  \/  |  ____|                   
-    | |  __   /  \  | \  / | |__    Made by :                    
-    | | |_ | / /\ \ | |\/| |  __|        - Tom           
-    | |__| |/ ____ \| |  | | |____       - William          
-    \ _____/_/    \_\_|  |_|______|      - Marius    
-    """)
-
-    print("\nThe word you are looking for is", word_length, "characters long")
-
-    ask_letter = input("\n-----------------------\nGuess a letter : ")
+def replay_game():
+    global tries
+    response = input("Would you like to play again? (y/n): ")
+    if response.lower() == 'y':
+        tries = 1
+        play_game()
+    elif response.lower() == 'n':
+        exit()
+    else:
+        print("Invalid input. Please enter 'y' or 'n'.")
+        replay_game()
 
 def play_game():
     global tries,hangman_list,shuffled_word,shuffled_word,word_length,alphabet,wrong_guessed_word,hintguesses,ask_letter
