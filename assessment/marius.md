@@ -11,4 +11,13 @@ I contributed about 50% of the whole project. We researched as a team about the 
 
 ### Reflection
 
-Something I would do better next time is mainly communication : letting more work to my teammates, organising for a better equally splited work between all teammates. Communicate more often and efficiently with the team about the progress made. I would do better researches, breaking down problems more and optimize the code to make it more efficient  as well as more human readable.
+Something I wished I've would have done better was communicating : letting more work to my teammates, organising for a better equally splited work between all teammates. Communicate more often and efficiently with the team about the progress made. I would do better researches, breaking down problems more and optimize the code to make it more efficient  as well as more human readable.
+
+- would have done more:
+    - communications
+    - work split
+    - focus on teamwork
+    - researches
+    - breaking down problems
+    - code optimization
+
